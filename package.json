@@ -16,6 +16,10 @@
             "email": "maik.schmidt.hl@gmail.com"
         }
     ],
+    "main": "packages/compossibru-core/bin/cli.js",
+    "scripts": {
+        "postinstall": "npx lerna bootstrap"
+    },
     "devDependencies": {
         "lerna": "3.4.3"
     }
