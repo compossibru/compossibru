@@ -1,0 +1,22 @@
+{
+    "name": "compossibru",
+    "private": true,
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/compossibru/compossibru.git"
+    },
+    "authors": [
+        {
+            "name": "Leonard Hertel",
+            "email": "leonard.hertel@gmail.com"
+        },
+        {
+            "name": "Maik Schmidt",
+            "email": "maik.schmidt.hl@gmail.com"
+        }
+    ],
+    "devDependencies": {
+        "lerna": "3.4.3"
+    }
+}
