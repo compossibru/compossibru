@@ -1,9 +1,9 @@
 const { spawn } = require('child_process');
 
 const start = (port) => {
-    const child = spawn('npx', [
-        'next'
-    ]);
+    const child = spawn(`npx next -p ${port}`, {
+        shell: true
+    });
 
     child.on('error', (err) => {
         throw err;
