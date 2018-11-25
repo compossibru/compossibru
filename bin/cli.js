@@ -16,11 +16,14 @@ program
 program
     .command('start')
     .description('Start application with dev server')
-    .option('-p, --port [port]', 'Given port to run dev server', 3000)
+    .option('-p, --port [port]', 'Given port to run dev server', '3000')
+    .option('-w, --watch [watch]', 'Watch files to re-generate pages', 'true')
     .action((options) => {
         generatePages();
         start(options.port);
-        watch(generatePages);
+        if (options.watch === 'true') {
+            watch(generatePages);
+        }
     });
 
 program
