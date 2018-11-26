@@ -2,7 +2,11 @@
 
 const program = require('commander');
 const { authors, name, version } = require('../package.json');
-const { build, generatePages, start, watch } = require('../src/compossibru');
+const { build, generatePages, start, watch } = require('../src/compossibru'); // eslint-disable-line
+
+const compossibru = () => {
+    console.log(`${name} CLI (${version})`);
+};
 
 program
     .version(version)
@@ -19,6 +23,7 @@ program
     .option('-p, --port [port]', 'Given port to run dev server', '3000')
     .option('-w, --watch [watch]', 'Watch files to re-generate pages', 'true')
     .action((options) => {
+        compossibru();
         generatePages();
         start(options.port);
         if (options.watch === 'true') {
@@ -30,6 +35,7 @@ program
     .command('build')
     .description('Build the application')
     .action(() => {
+        compossibru();
         generatePages();
         build();
     });
