@@ -1,37 +1,38 @@
 const path = require('path');
 const fs = require('fs-extra');
-const YAML = require('yamljs');
+const cosmiconfig = require('cosmiconfig');
 const ejs = require('ejs');
 const uuid = require('uuid').v4;
 const camelCase = require('camelcase');
 
+const explorer = cosmiconfig('compossibru');
 const generatePages = () => {
-    const configuration = YAML.load('compossibru.config.yml');
-    if (fs.existsSync('pages')) {
-        console.log('Remove "pages" folder');
-        fs.removeSync('pages');
+    const { config: configuration } = explorer.searchSync() || {};
+    if (!configuration) {
+        throw new Error('Cannot find configuration for compossibru');
     }
 
-    console.log('Create "pages" folder');
+    if (fs.existsSync('pages')) {
+        fs.removeSync('pages');
+    }
     fs.mkdirSync('pages');
 
     const globalStyles = configuration.Styles || [];
-
     Object.keys(configuration.Routes).forEach((routeKey) => {
         const routeConfig = configuration.Routes[routeKey];
         let routeFileName;
         if (routeConfig.Route === '/') {
-            routeFileName = 'index'
+            routeFileName = 'index';
         } else {
-            routeFileName = routeConfig.Route.split('/')[1];
+            routeFileName = routeConfig.Route.split('/')[1]; // eslint-disable-line
         }
 
-        let widgetExecutions = [];
-        let layoutVariables = {};
-        let widgetImports = {};
+        const widgetExecutions = [];
+        const layoutVariables = {};
+        const widgetImports = {};
         Object.keys(routeConfig.Containers).forEach((containerName) => {
             const widgets = routeConfig.Containers[containerName] || [];
-            let divs = [];
+            const divs = [];
             widgets.forEach((widget) => {
                 const widgetId = `compossibru-${uuid()}`;
                 const widgetName = camelCase(widget);
