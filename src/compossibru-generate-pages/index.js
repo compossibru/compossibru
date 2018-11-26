@@ -1,17 +1,10 @@
 const path = require('path');
 const fs = require('fs-extra');
-const cosmiconfig = require('cosmiconfig');
 const ejs = require('ejs');
 const uuid = require('uuid').v4;
 const camelCase = require('camelcase');
 
-const explorer = cosmiconfig('compossibru');
-const generatePages = () => {
-    const { config: configuration } = explorer.searchSync() || {};
-    if (!configuration) {
-        throw new Error('Cannot find configuration for compossibru');
-    }
-
+const generatePages = (configuration) => {
     if (fs.existsSync('pages')) {
         fs.removeSync('pages');
     }

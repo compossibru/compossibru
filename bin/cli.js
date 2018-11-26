@@ -1,8 +1,19 @@
 #!/usr/bin/env node
 
 const program = require('commander');
+const cosmiconfig = require('cosmiconfig');
+
 const { authors, name, version } = require('../package.json');
 const { build, generatePages, start, watch } = require('../src/compossibru'); // eslint-disable-line
+
+const explorer = cosmiconfig('compossibru');
+const getConfiguration = () => {
+    const { config: configuration } = explorer.searchSync() || {};
+    if (!configuration) {
+        throw new Error('Cannot find configuration for compossibru');
+    }
+    return configuration;
+};
 
 const compossibru = () => {
     console.log(`${name} CLI (${version})`); // eslint-disable-line
@@ -24,10 +35,12 @@ program
     .option('-w, --watch [watch]', 'Watch files to re-generate pages', 'true')
     .action((options) => {
         compossibru();
-        generatePages();
+        generatePages(getConfiguration());
         start(options.port);
         if (options.watch === 'true') {
-            watch(generatePages);
+            watch(() => {
+                generatePages(getConfiguration());
+            });
         }
     });
 
@@ -36,7 +49,7 @@ program
     .description('Build the application')
     .action(() => {
         compossibru();
-        generatePages();
+        generatePages(getConfiguration());
         build();
     });
 
