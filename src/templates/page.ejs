@@ -9,7 +9,7 @@ class Widget extends React.Component {
         const <%= widgetImport.name %> = require('<%= widgetImport.path %>').default;
         <% }); %>
         <% widgetExecutions.forEach(function(widgetExecution){ %>
-            <%= widgetExecution.name %>('<%= widgetExecution.id %>');
+            <%= widgetExecution.name %>('<%= widgetExecution.id %>', <%- widgetExecution.context %>);
         <% }); %>
     }
 

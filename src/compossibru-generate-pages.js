@@ -33,13 +33,24 @@ const generatePages = () => {
         Object.keys(routeConfig.Containers).forEach((containerName) => {
             const widgets = routeConfig.Containers[containerName] || [];
             const divs = [];
-            widgets.forEach((widget) => {
+            widgets.forEach((rawWidget) => {
+                let widget = rawWidget;
+                let widgetContext;
+                if (typeof rawWidget === 'object') {
+                    const keys = Object.keys(rawWidget);
+                    if (keys.length !== 1) {
+                        throw new Error('Widget is misconfigured');
+                    }
+                    widget = keys[0];
+                    widgetContext = rawWidget[widget];
+                }
                 const widgetId = `compossibru-${uuid()}`;
                 const widgetName = camelCase(widget);
                 const widgetPath = widget;
                 widgetExecutions.push({
                     id: widgetId,
-                    name: widgetName
+                    name: widgetName,
+                    context: JSON.stringify(widgetContext || {})
                 });
                 divs.push(`<div id="${widgetId}"></div>`);
                 widgetImports[widget] = {
