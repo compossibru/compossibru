@@ -5,7 +5,7 @@ const { authors, name, version } = require('../package.json');
 const { build, generatePages, start, watch } = require('../src/compossibru'); // eslint-disable-line
 
 const compossibru = () => {
-    console.log(`${name} CLI (${version})`);
+    console.log(`${name} CLI (${version})`); // eslint-disable-line
 };
 
 program
