@@ -1,11 +1,11 @@
 const fs = require('fs');
 
-const watch = (fn) => {
+const watch = (filepath, fn) => {
     fs.watch('layouts/', { recursive: true }, () => {
         fn();
     });
 
-    fs.watchFile('compossibru.config.yml', () => {
+    fs.watchFile(filepath, () => {
         fn();
     });
 };

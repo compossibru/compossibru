@@ -6,13 +6,20 @@ const cosmiconfig = require('cosmiconfig');
 const { authors, name, version } = require('../package.json');
 const { build, generatePages, start, watch } = require('../src/compossibru'); // eslint-disable-line
 
-const explorer = cosmiconfig('compossibru');
+const explorer = cosmiconfig('compossibru', { cache: false });
 const getConfiguration = () => {
     const { config: configuration } = explorer.searchSync() || {};
     if (!configuration) {
         throw new Error('Cannot find configuration for compossibru');
     }
     return configuration;
+};
+const getFilepathToWatch = () => {
+    const { filepath } = explorer.searchSync() || {};
+    if (!filepath) {
+        throw new Error('Cannot find configuration for compossibru');
+    }
+    return filepath;
 };
 
 const compossibru = () => {
@@ -38,7 +45,7 @@ program
         generatePages(getConfiguration());
         start(options.port);
         if (options.watch === 'true') {
-            watch(() => {
+            watch(getFilepathToWatch(), () => {
                 generatePages(getConfiguration());
             });
         }
