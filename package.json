@@ -19,7 +19,9 @@
         "compossibru": "bin/cli.js"
     },
     "scripts": {
-        "eslint": "npx eslint bin/*.js src/*.js"
+        "eslint": "npx eslint bin/*.js src/*.js",
+        "prebuild": "rm -rf dist/",
+        "build": "mkdir dist && cp -r package.json package-lock.json README.md LICENSE src bin ./dist"
     },
     "husky": {
         "hooks": {
