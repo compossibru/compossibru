@@ -33,7 +33,7 @@
     "husky": {
         "hooks": {
             "commit-msg": "npx commitlint -e $HUSKY_GIT_PARAMS",
-            "pre-push": "npm run eslint && test:unit"
+            "pre-push": "npm run eslint && npm run test:unit"
         }
     },
     "dependencies": {
