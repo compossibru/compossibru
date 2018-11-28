@@ -32,7 +32,7 @@ tbd
 - [x] integrate [`commander.js`](https://github.com/tj/commander.js)
 - [x] integrate [`cosmiconfig`](https://github.com/davidtheclark/cosmiconfig)
 - [ ] integrate [`semantic-release`](https://github.com/semantic-release/semantic-release)
-- [ ] integrate [`jest`](https://github.com/facebook/jest)
+- [x] integrate [`jest`](https://github.com/facebook/jest)
 - [ ] create CI/CD (possibly [GitHub Actions](https://github.com/features/actions))
 - [ ] publish to `npm registry`
 - [ ] create `init` CLI command to auto-generate configuration
