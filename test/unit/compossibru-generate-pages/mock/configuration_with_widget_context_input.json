@@ -1,0 +1,38 @@
+{
+    "Version": 1,
+    "Styles": [
+        "bootstrap/dist/css/bootstrap.min.css"
+    ],
+    "Routes": {
+        "Home": {
+            "Route": "/",
+            "Layout": "layouts/3-column.ejs",
+            "Containers": {
+                "left": [
+                    {
+                        "compossibru-widget-jquery-example": {
+                            "foo": "bar"
+                        }
+                    },
+                    {
+                        "compossibru-widget-jquery-example": {
+                            "bar": "foo"
+                        }
+                    }
+                ],
+                "middle": [
+                    {
+                        "compossibru-widget-react-example": {
+                            "foo": [
+                                "bar"
+                            ]
+                        }
+                    }
+                ],
+                "right": [
+                    "compossibru-widget-vue-example"
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,111 @@
+[
+    {
+        "layoutPath": "./layouts/3-column.ejs",
+        "layoutVariables": {
+            "left": "<div id=\"id\"></div>",
+            "middle": "<div id=\"id\"></div>",
+            "right": "<div id=\"id\"></div>"
+        },
+        "styles": [
+            "bootstrap/dist/css/bootstrap.min.css"
+        ],
+        "widgetImports": [
+            {
+                "name": "compossibruWidgetJqueryExample",
+                "path": "compossibru-widget-jquery-example"
+            },
+            {
+                "name": "compossibruWidgetReactExample",
+                "path": "compossibru-widget-react-example"
+            },
+            {
+                "name": "compossibruWidgetVueExample",
+                "path": "compossibru-widget-vue-example"
+            }
+        ],
+        "widgetExecutions": [
+            {
+                "id": "id",
+                "name": "compossibruWidgetJqueryExample",
+                "context": "{\"foo\":\"bar\"}"
+            },
+            {
+                "id": "id",
+                "name": "compossibruWidgetReactExample",
+                "context": "{}"
+            },
+            {
+                "id": "id",
+                "name": "compossibruWidgetVueExample",
+                "context": "{}"
+            }
+        ],
+        "routeFileName": "index"
+    },
+    {
+        "layoutPath": "./layouts/2-column.ejs",
+        "layoutVariables": {
+            "left": "<div id=\"id\"></div>",
+            "right": "<div id=\"id\"></div>"
+        },
+        "styles": [
+            "bootstrap/dist/css/bootstrap.min.css"
+        ],
+        "widgetImports": [
+            {
+                "name": "compossibruWidgetVueExample",
+                "path": "compossibru-widget-vue-example"
+            },
+            {
+                "name": "compossibruWidgetJqueryExample",
+                "path": "compossibru-widget-jquery-example"
+            }
+        ],
+        "widgetExecutions": [
+            {
+                "id": "id",
+                "name": "compossibruWidgetVueExample",
+                "context": "{}"
+            },
+            {
+                "id": "id",
+                "name": "compossibruWidgetJqueryExample",
+                "context": "{\"bar\":\"baz\"}"
+            }
+        ],
+        "routeFileName": "foo"
+    },
+    {
+        "layoutPath": "./layouts/2-column.ejs",
+        "layoutVariables": {
+            "left": "<div id=\"id\"></div>",
+            "right": "<div id=\"id\"></div>"
+        },
+        "styles": [
+            "bootstrap/dist/css/bootstrap.min.css"
+        ],
+        "widgetImports": [
+            {
+                "name": "compossibruWidgetVueExample",
+                "path": "compossibru-widget-vue-example"
+            },
+            {
+                "name": "compossibruWidgetReactExample",
+                "path": "compossibru-widget-react-example"
+            }
+        ],
+        "widgetExecutions": [
+            {
+                "id": "id",
+                "name": "compossibruWidgetVueExample",
+                "context": "{\"baz\":[\"foo\",\"bar\"]}"
+            },
+            {
+                "id": "id",
+                "name": "compossibruWidgetReactExample",
+                "context": "{}"
+            }
+        ],
+        "routeFileName": "bar"
+    }
+]
