@@ -20,6 +20,8 @@
     },
     "scripts": {
         "eslint": "npx eslint bin/*.js src/*.js",
+        "test": "npm run test:unit",
+        "test:unit": "npx jest --env=node /test/unit",
         "prebuild": "rm -rf dist/",
         "build": "mkdir dist && cp -r package.json package-lock.json README.md LICENSE src bin ./dist"
     },
@@ -31,7 +33,7 @@
     "husky": {
         "hooks": {
             "commit-msg": "npx commitlint -e $HUSKY_GIT_PARAMS",
-            "pre-push": "npm run eslint"
+            "pre-push": "npm run eslint && test:unit"
         }
     },
     "dependencies": {
@@ -52,6 +54,7 @@
         "eslint": "5.9.0",
         "eslint-config-airbnb-base": "13.1.0",
         "eslint-plugin-import": "2.14.0",
-        "husky": "1.2.0"
+        "husky": "1.2.0",
+        "jest": "23.6.0"
     }
 }
