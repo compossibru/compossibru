@@ -4,14 +4,9 @@ const ejs = require('ejs');
 const uuid = require('uuid').v4;
 const camelCase = require('camelcase');
 
-const generatePages = (configuration) => {
-    if (fs.existsSync('pages')) {
-        fs.removeSync('pages');
-    }
-    fs.mkdirSync('pages');
-
+const preparePages = (configuration, widgetIdGenerator, layoutPathFinder) => {
     const globalStyles = configuration.Styles || [];
-    Object.keys(configuration.Routes).forEach((routeKey) => {
+    return Object.keys(configuration.Routes).map((routeKey) => {
         const routeConfig = configuration.Routes[routeKey];
         let routeFileName;
         if (routeConfig.Route === '/') {
@@ -37,7 +32,7 @@ const generatePages = (configuration) => {
                     widget = keys[0];
                     widgetContext = rawWidget[widget];
                 }
-                const widgetId = `compossibru-${uuid()}`;
+                const widgetId = widgetIdGenerator();
                 const widgetName = camelCase(widget);
                 const widgetPath = widget;
                 widgetExecutions.push({
@@ -54,17 +49,35 @@ const generatePages = (configuration) => {
             layoutVariables[containerName] = divs.join('');
         });
 
-        const template = fs.readFileSync(`${path.dirname(__filename)}/templates/page.ejs`).toString();
-        const variables = {
-            layoutPath: `${process.cwd()}/${routeConfig.Layout}`,
+        return {
+            layoutPath: `${layoutPathFinder()}/${routeConfig.Layout}`,
             layoutVariables,
             styles: globalStyles,
             widgetImports: Object.values(widgetImports),
-            widgetExecutions
+            widgetExecutions,
+            routeFileName
         };
-
-        fs.writeFileSync(`pages/${routeFileName}.js`, ejs.render(template, variables));
     });
 };
 
-module.exports = generatePages;
+const generatePages = (configuration) => {
+    if (fs.existsSync('pages')) {
+        fs.removeSync('pages');
+    }
+    fs.mkdirSync('pages');
+
+    const template = fs.readFileSync(`${path.dirname(__filename)}/templates/page.ejs`).toString();
+    const pages = preparePages(
+        configuration,
+        () => `compossibru-${uuid()}`,
+        process.cwd
+    );
+    pages.forEach((page) => {
+        fs.writeFileSync(`pages/${page.routeFileName}.js`, ejs.render(template, page));
+    });
+};
+
+module.exports = {
+    preparePages,
+    generatePages
+};
