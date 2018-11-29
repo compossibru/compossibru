@@ -1,6 +1,6 @@
-const { spawn } = require('child_process');
+import { spawn } from 'child_process';
 
-const build = () => {
+export const build = () => {
     const child = spawn('npx next build && npx next export', {
         shell: true
     });
@@ -21,5 +21,3 @@ const build = () => {
         process.stdout.write('I\'m done!');
     });
 };
-
-module.exports = build;

@@ -1,6 +1,6 @@
-const { spawn } = require('child_process');
+import { spawn } from 'child_process';
 
-const start = (port) => {
+export const start = (port) => {
     const child = spawn(`npx next -p ${port}`, {
         shell: true
     });
@@ -21,5 +21,3 @@ const start = (port) => {
         process.stdout.write('I\'m done!');
     });
 };
-
-module.exports = start;

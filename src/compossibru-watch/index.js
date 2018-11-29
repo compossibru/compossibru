@@ -1,6 +1,6 @@
-const fs = require('fs');
+import fs from 'fs';
 
-const watch = (filepath, fn) => {
+export const watch = (filepath, fn) => {
     fs.watch('layouts/', { recursive: true }, () => {
         fn();
     });
@@ -9,5 +9,3 @@ const watch = (filepath, fn) => {
         fn();
     });
 };
-
-module.exports = watch;

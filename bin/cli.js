@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
-const program = require('commander');
-const cosmiconfig = require('cosmiconfig');
+import program from 'commander';
+import cosmiconfig from 'cosmiconfig';
 
-const { authors, name, version } = require('../package.json');
-const { build, generatePages, start, watch } = require('../src/compossibru'); // eslint-disable-line
+import { authors, name, version } from '../package.json';
+import { build, generatePages, start, watch } from '../src/compossibru'; // eslint-disable-line
 
 const explorer = cosmiconfig('compossibru', { cache: false });
 const getConfiguration = () => {

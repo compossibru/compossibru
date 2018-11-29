@@ -1,10 +1,10 @@
-const path = require('path');
-const fs = require('fs-extra');
-const ejs = require('ejs');
-const uuid = require('uuid').v4;
-const camelCase = require('camelcase');
+import path from 'path';
+import fs from 'fs-extra';
+import ejs from 'ejs';
+import { v4 as uuid } from 'uuid';
+import camelCase from 'camelcase';
 
-const preparePages = (configuration, widgetIdGenerator, layoutPathFinder) => {
+export const preparePages = (configuration, widgetIdGenerator, layoutPathFinder) => {
     const globalStyles = configuration.Styles || [];
     return Object.keys(configuration.Routes).map((routeKey) => {
         const routeConfig = configuration.Routes[routeKey];
@@ -60,7 +60,7 @@ const preparePages = (configuration, widgetIdGenerator, layoutPathFinder) => {
     });
 };
 
-const generatePages = (configuration) => {
+export const generatePages = (configuration) => {
     if (fs.existsSync('pages')) {
         fs.removeSync('pages');
     }
@@ -75,9 +75,4 @@ const generatePages = (configuration) => {
     pages.forEach((page) => {
         fs.writeFileSync(`pages/${page.routeFileName}.js`, ejs.render(template, page));
     });
-};
-
-module.exports = {
-    preparePages,
-    generatePages
 };
