@@ -1,0 +1,25 @@
+[
+    {
+        "layoutPath": "./layouts/3-column.ejs",
+        "layoutVariables": {
+            "main": "<div id=\"id\"></div>"
+        },
+        "styles": [
+            "bootstrap/dist/css/bootstrap.min.css"
+        ],
+        "widgetImports": [
+            {
+                "name": "_compossibru_widgetJqueryExample",
+                "path": "@compossibru/widget-jquery-example"
+            }
+        ],
+        "widgetExecutions": [
+            {
+                "id": "id",
+                "name": "_compossibru_widgetJqueryExample",
+                "context": "{}"
+            }
+        ],
+        "routeFileName": "index"
+    }
+]

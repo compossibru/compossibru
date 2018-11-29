@@ -1,0 +1,17 @@
+{
+    "Version": 1,
+    "Styles": [
+        "bootstrap/dist/css/bootstrap.min.css"
+    ],
+    "Routes": {
+        "Home": {
+            "Route": "/",
+            "Layout": "layouts/3-column.ejs",
+            "Containers": {
+                "main": [
+                    "@compossibru/widget-jquery-example"
+                ]
+            }
+        }
+    }
+}

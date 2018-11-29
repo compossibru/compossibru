@@ -56,7 +56,7 @@ var preparePages = exports.preparePages = function preparePages(configuration, w
                     widgetContext = rawWidget[widget];
                 }
                 var widgetId = widgetIdGenerator();
-                var widgetName = (0, _camelcase2.default)(widget);
+                var widgetName = (0, _camelcase2.default)(widget).replace(/[^\w\s]/gi, '_');
                 var widgetPath = widget;
                 widgetExecutions.push({
                     id: widgetId,

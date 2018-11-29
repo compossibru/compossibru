@@ -33,7 +33,7 @@ export const preparePages = (configuration, widgetIdGenerator, layoutPathFinder)
                     widgetContext = rawWidget[widget];
                 }
                 const widgetId = widgetIdGenerator();
-                const widgetName = camelCase(widget);
+                const widgetName = camelCase(widget).replace(/[^\w\s]/gi, '_');
                 const widgetPath = widget;
                 widgetExecutions.push({
                     id: widgetId,
