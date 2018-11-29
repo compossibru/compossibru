@@ -24,7 +24,6 @@
         "test:unit": "npx jest --env=node /test/unit",
         "prebuild": "rm -rf dist/ && mkdir dist && cp -r package.json package-lock.json README.md LICENSE src bin ./dist",
         "build": "npx babel dist --out-dir dist",
-        "postbuild": "chmod +x dist/bin/cli.js",
         "prepublish": "npm run build"
     },
     "commitlint": {
