@@ -28,38 +28,63 @@ Install it:
 npm install @compossibru/compossibru
 ```
 
-Add your first widgets:
+Add widgets:
 ```bash
-npm install compossibru-widget-jquery-example compossibru-widget-react-example compossibru-widget-vue-example
+npm install @compossibru/widget-twitter-widgets
 ```
 
-Add a script to your `package.json`:
+Add scripts in your `package.json`:
 ```json
 {
   "scripts": {
-    "start": "compossibru start",
-    "build": "compossibru build"
+    "start": "npx compossibru start",
+    "build": "npx compossibru build"
   }
 }
 ```
 
-Add the configuration to your `compossibru.config.yml`:
+Add configuration to your `.compossibrurc` file:
 ```yml
 Version: 1
 Routes:
   Home:
     Route: /
-    Layout: layouts/3-column.ejs
+    Layout: layouts/main.ejs
     Containers:
       left:
-        - compossibru-widget-jquery-example
+        - "@compossibru/widget-twitter-widgets":
+            type: Timeline
+            options:
+              dataSource:
+                sourceType: profile
+                screenName: npmjs
+              options:
+                username: npmjs
+                height: 400
       middle:
-        - compossibru-widget-react-example
+        - "@compossibru/widget-twitter-widgets":
+            type: Timeline
+            options:
+              dataSource:
+                sourceType: profile
+                screenName: github
+              options:
+                username: github
+                height: 400
       right:
-        - compossibru-widget-vue-example
+        - "@compossibru/widget-twitter-widgets":
+            type: Timeline
+            options:
+              dataSource:
+                sourceType: profile
+                screenName: internetofshit
+              options:
+                username: internetofshit
+                height: 400
+
 ```
 
-Add custom layouts to your `layouts` folder:
+Add custom layouts to your `layouts` folder (e.g. `main.ejs`):
 ```html
 <div>
     <div>
@@ -74,12 +99,23 @@ Add custom layouts to your `layouts` folder:
 </div>
 ```
 
+The final project structure looks now the following:
+```
+.
+├── layouts
+│   ├── main.ejs   
+├── .compossibrurc
+├── package.json
+```
+
 Congrats. You are done. `compossibru` is configured!
 
 To start:
 ```bash
-compossibru start
+npm start
 ```
+
+Enter http://localhost:3000
 
 ## How to write a widget?
 tbd
@@ -88,7 +124,7 @@ tbd
 - [ ] add proper documentation
 - [x] integrate [`commander.js`](https://github.com/tj/commander.js)
 - [x] integrate [`cosmiconfig`](https://github.com/davidtheclark/cosmiconfig)
-- [ ] integrate [`semantic-release`](https://github.com/semantic-release/semantic-release)
+- [x] integrate [`semantic-release`](https://github.com/semantic-release/semantic-release)
 - [x] integrate [`jest`](https://github.com/facebook/jest)
 - [ ] create CI/CD (possibly [GitHub Actions](https://github.com/features/actions))
 - [ ] publish to `npm registry`
