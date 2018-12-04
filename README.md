@@ -99,6 +99,15 @@ Add custom layouts to your `layouts` folder (e.g. `main.ejs`):
 </div>
 ```
 
+The final project structure looks now the following:
+```
+.
+├── layouts
+│   ├── main.ejs   
+├── .compossibrurc
+├── package.json
+```
+
 Congrats. You are done. `compossibru` is configured!
 
 To start:
