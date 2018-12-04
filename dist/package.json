@@ -1,6 +1,6 @@
 {
     "name": "@compossibru/compossibru",
-    "version": "0.1.0",
+    "version": "0.0.0",
     "repository": {
         "type": "git",
         "url": "https://github.com/compossibru/compossibru.git"
@@ -16,7 +16,7 @@
         }
     ],
     "bin": {
-        "compossibru": "dist/bin/cli.js"
+        "compossibru": "bin/cli.js"
     },
     "scripts": {
         "eslint": "npx eslint bin/*.js src/*.js",
