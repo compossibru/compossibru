@@ -115,7 +115,7 @@ tbd
 - [ ] add proper documentation
 - [x] integrate [`commander.js`](https://github.com/tj/commander.js)
 - [x] integrate [`cosmiconfig`](https://github.com/davidtheclark/cosmiconfig)
-- [ ] integrate [`semantic-release`](https://github.com/semantic-release/semantic-release)
+- [x] integrate [`semantic-release`](https://github.com/semantic-release/semantic-release)
 - [x] integrate [`jest`](https://github.com/facebook/jest)
 - [ ] create CI/CD (possibly [GitHub Actions](https://github.com/features/actions))
 - [ ] publish to `npm registry`
