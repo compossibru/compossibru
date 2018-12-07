@@ -1,5 +1,6 @@
 {
     "name": "@compossibru/compossibru",
+    "description": "Build a composite UI easily",
     "homepage": "https://github.com/compossibru/compossibru#readme",
     "repository": {
         "type": "git",
