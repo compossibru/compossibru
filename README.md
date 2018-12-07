@@ -1,4 +1,4 @@
-# compossibru
+# @compossibru/compossibru
 <a href="https://www.npmjs.com/package/@compossibru/compossibru">
     <img alt="npm latest version" src="https://img.shields.io/npm/v/@compossibru/compossibru/latest.svg">
 </a>
