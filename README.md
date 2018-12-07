@@ -5,9 +5,6 @@
 <a href="https://github.com/semantic-release/semantic-release">
     <img alt="semantic-release" src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg">
 </a>
-#### Disclaimer: compossibru is still under development! **It's not recommended to use it in production.** 
-
-<hr/>
 
 compossibru helps you to build a composite UI easily.
 
@@ -133,7 +130,7 @@ tbd
 - [x] integrate [`semantic-release`](https://github.com/semantic-release/semantic-release)
 - [x] integrate [`jest`](https://github.com/facebook/jest)
 - [ ] create CI/CD (possibly [GitHub Actions](https://github.com/features/actions))
-- [ ] publish to `npm registry`
+- [x] publish to `npm registry`
 - [ ] create `init` CLI command to auto-generate configuration
 
 ## License
