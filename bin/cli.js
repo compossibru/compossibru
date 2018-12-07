@@ -3,9 +3,9 @@
 import program from 'commander';
 import cosmiconfig from 'cosmiconfig';
 
+import { authors, name, version } from '../../package.json'; // eslint-disable-line
 import { build, generatePages, start, watch } from '../src/compossibru'; // eslint-disable-line
 
-const { authors, name, version } = require(`${process.cwd()}/package.json`); // eslint-disable-line
 const explorer = cosmiconfig('compossibru', { cache: false });
 const getConfiguration = () => {
     const { config: configuration } = explorer.searchSync() || {};
