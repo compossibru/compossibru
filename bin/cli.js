@@ -3,7 +3,7 @@
 import program from 'commander';
 import cosmiconfig from 'cosmiconfig';
 
-import { authors, name, version } from '../package.json';
+import { authors, name, version } from '/package.json';
 import { build, generatePages, start, watch } from '../src/compossibru'; // eslint-disable-line
 
 const explorer = cosmiconfig('compossibru', { cache: false });
