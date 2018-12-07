@@ -1,9 +1,12 @@
 {
     "name": "@compossibru/compossibru",
-    "version": "0.0.0",
+    "homepage": "https://github.com/compossibru/compossibru#readme",
     "repository": {
         "type": "git",
         "url": "https://github.com/compossibru/compossibru.git"
+    },
+    "bugs": {
+        "url": "https://github.com/compossibru/widget-twitter-widgets/issues"
     },
     "authors": [
         {
@@ -14,6 +17,11 @@
             "name": "Maik Schmidt",
             "email": "maik.schmidt.hl@gmail.com"
         }
+    ],
+    "license": "MIT",
+    "keywords": [
+        "composite",
+        "composite-ui"
     ],
     "bin": {
         "compossibru": "bin/cli.js"
@@ -35,6 +43,9 @@
             "commit-msg": "npx commitlint -e $HUSKY_GIT_PARAMS",
             "pre-push": "npm run eslint && npm run test:unit"
         }
+    },
+    "publishConfig": {
+        "access": "public"
     },
     "dependencies": {
         "camelcase": "5.0.0",
