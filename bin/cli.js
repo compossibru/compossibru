@@ -36,7 +36,7 @@ const generatePagesProxy = (configuration) => {
     fs.mkdirSync('pages');
     generatePages(
         configuration,
-        `${path.dirname(__filename)}/../../src/compossibru-generate-pages`,
+        `${path.dirname(__filename)}/../src/compossibru-generate-pages`,
         'pages',
         () => `compossibru-${uuid()}`,
         process.cwd
