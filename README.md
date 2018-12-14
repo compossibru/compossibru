@@ -132,6 +132,7 @@ tbd
 - [ ] create CI/CD (possibly [GitHub Actions](https://github.com/features/actions))
 - [x] publish to `npm registry`
 - [ ] create `init` CLI command to auto-generate configuration
+- [ ] improve path handling in `bin/cli.js`
 
 ## License
 
