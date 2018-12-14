@@ -1,0 +1,44 @@
+[
+    {
+        "layoutPath": "./layouts/3-column.ejs",
+        "layoutVariables": {
+            "left": "<div id=\"id\"></div>",
+            "middle": "<div id=\"id\"></div>",
+            "right": "<div id=\"id\"></div>"
+        },
+        "imports": {},
+        "styles": [],
+        "widgetImports": [
+            {
+                "name": "compossibruWidgetJqueryExample",
+                "path": "compossibru-widget-jquery-example"
+            },
+            {
+                "name": "compossibruWidgetReactExample",
+                "path": "compossibru-widget-react-example"
+            },
+            {
+                "name": "compossibruWidgetVueExample",
+                "path": "compossibru-widget-vue-example"
+            }
+        ],
+        "widgetExecutions": [
+            {
+                "id": "id",
+                "name": "compossibruWidgetJqueryExample",
+                "context": "{}"
+            },
+            {
+                "id": "id",
+                "name": "compossibruWidgetReactExample",
+                "context": "{}"
+            },
+            {
+                "id": "id",
+                "name": "compossibruWidgetVueExample",
+                "context": "{}"
+            }
+        ],
+        "routeFileName": "index"
+    }
+]

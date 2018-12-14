@@ -15,6 +15,10 @@ import configurationWithSpecialCharWidgetInput from './mock/configuration_with_s
 import configurationWithSpecialCharWidgetOutput from './mock/configuration_with_special_char_widget_output.json';
 import configurationWithWidgetImportsInput from './mock/configuration_with_widget_imports_input.json';
 import configurationWithWidgetImportsOutput from './mock/configuration_with_widget_imports_output.json';
+import configurationWithoutWidgetImportsAndStylesInput
+    from './mock/configuration_without_widget_imports_and_styles_input.json';
+import configurationWithoutWidgetImportsAndStylesOutput
+    from './mock/configuration_without_widget_imports_and_styles_output.json';
 
 test('compossibru-generate-pages: preparePages without widget context', () => {
     const pages = preparePages(
@@ -68,4 +72,13 @@ test('compossibru-generate-pages: preparePages with widget imports', () => {
         () => '.'
     );
     expect(pages).toEqual(configurationWithWidgetImportsOutput);
+});
+
+test('compossibru-generate-pages: preparePages without widget imports and styles', () => {
+    const pages = preparePages(
+        configurationWithoutWidgetImportsAndStylesInput,
+        () => 'id',
+        () => '.'
+    );
+    expect(pages).toEqual(configurationWithoutWidgetImportsAndStylesOutput);
 });
