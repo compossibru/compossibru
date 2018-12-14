@@ -3,6 +3,7 @@ import ejs from 'ejs';
 import camelCase from 'camelcase';
 
 export const preparePages = (configuration, widgetIdGenerator, layoutPathFinder) => {
+    const globalImports = configuration.Imports || {};
     const globalStyles = configuration.Styles || [];
     return Object.keys(configuration.Routes).map((routeKey) => {
         const routeConfig = configuration.Routes[routeKey];
@@ -50,6 +51,7 @@ export const preparePages = (configuration, widgetIdGenerator, layoutPathFinder)
         return {
             layoutPath: `${layoutPathFinder()}/${routeConfig.Layout}`,
             layoutVariables,
+            imports: globalImports,
             styles: globalStyles,
             widgetImports: Object.values(widgetImports),
             widgetExecutions,

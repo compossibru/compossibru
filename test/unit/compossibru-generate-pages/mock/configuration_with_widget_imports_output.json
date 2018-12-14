@@ -2,11 +2,14 @@
     {
         "layoutPath": "./layouts/3-column.ejs",
         "layoutVariables": {
-            "left": "<div id=\"id\"></div><div id=\"id\"></div>",
+            "left": "<div id=\"id\"></div>",
             "middle": "<div id=\"id\"></div>",
             "right": "<div id=\"id\"></div>"
         },
-        "imports": {},
+        "imports": {
+            "Head": "next/head",
+            "{something}": "different"
+        },
         "styles": [
             "bootstrap/dist/css/bootstrap.min.css"
         ],
@@ -28,17 +31,12 @@
             {
                 "id": "id",
                 "name": "compossibruWidgetJqueryExample",
-                "context": "{\"foo\":\"bar\"}"
-            },
-            {
-                "id": "id",
-                "name": "compossibruWidgetJqueryExample",
-                "context": "{\"bar\":\"foo\"}"
+                "context": "{}"
             },
             {
                 "id": "id",
                 "name": "compossibruWidgetReactExample",
-                "context": "{\"foo\":[\"bar\"]}"
+                "context": "{}"
             },
             {
                 "id": "id",

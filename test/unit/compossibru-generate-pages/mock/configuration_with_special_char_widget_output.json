@@ -4,6 +4,7 @@
         "layoutVariables": {
             "main": "<div id=\"id\"></div>"
         },
+        "imports": {},
         "styles": [
             "bootstrap/dist/css/bootstrap.min.css"
         ],

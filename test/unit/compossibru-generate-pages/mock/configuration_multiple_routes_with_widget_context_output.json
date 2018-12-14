@@ -6,6 +6,7 @@
             "middle": "<div id=\"id\"></div>",
             "right": "<div id=\"id\"></div>"
         },
+        "imports": {},
         "styles": [
             "bootstrap/dist/css/bootstrap.min.css"
         ],
@@ -48,6 +49,7 @@
             "left": "<div id=\"id\"></div>",
             "right": "<div id=\"id\"></div>"
         },
+        "imports": {},
         "styles": [
             "bootstrap/dist/css/bootstrap.min.css"
         ],
@@ -81,6 +83,7 @@
             "left": "<div id=\"id\"></div>",
             "right": "<div id=\"id\"></div>"
         },
+        "imports": {},
         "styles": [
             "bootstrap/dist/css/bootstrap.min.css"
         ],

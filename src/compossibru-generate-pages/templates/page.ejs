@@ -1,4 +1,7 @@
 import React from 'react'
+<% Object.keys(imports).forEach(function(importKey){ %>
+import <%= importKey %> from '<%= imports[importKey] %>';
+<% }); %>
 <% styles.forEach(function(style){ %>
 import '<%= style %>';
 <% }); %>

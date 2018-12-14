@@ -9,6 +9,8 @@ const configurationMultipleRoutesWithWidgetContextInput = require('./mock/config
 const configurationMultipleRoutesWithWidgetContextOutput = require('./mock/configuration_multiple_routes_with_widget_context_output.json');
 const configurationWithSpecialCharWidgetInput = require('./mock/configuration_with_special_char_widget_input.json');
 const configurationWithSpecialCharWidgetOutput = require('./mock/configuration_with_special_char_widget_output.json');
+const configurationWithWidgetImportsInput = require('./mock/configuration_with_widget_imports_input.json');
+const configurationWithWidgetImportsOutput = require('./mock/configuration_with_widget_imports_output.json');
 
 test('compossibru-generate-pages: preparePages without widget context', () => {
     const pages = preparePages(
@@ -53,4 +55,13 @@ test('compossibru-generate-pages: preparePages with special char widget', () => 
         () => '.'
     );
     expect(pages).toEqual(configurationWithSpecialCharWidgetOutput);
+});
+
+test('compossibru-generate-pages: preparePages with widget imports', () => {
+    const pages = preparePages(
+        configurationWithWidgetImportsInput,
+        () => 'id',
+        () => '.'
+    );
+    expect(pages).toEqual(configurationWithWidgetImportsOutput);
 });
