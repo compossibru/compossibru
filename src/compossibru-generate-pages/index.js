@@ -1,7 +1,5 @@
-import path from 'path';
 import fs from 'fs-extra';
 import ejs from 'ejs';
-import { v4 as uuid } from 'uuid';
 import camelCase from 'camelcase';
 
 export const preparePages = (configuration, widgetIdGenerator, layoutPathFinder) => {
@@ -60,19 +58,14 @@ export const preparePages = (configuration, widgetIdGenerator, layoutPathFinder)
     });
 };
 
-export const generatePages = (configuration) => {
-    if (fs.existsSync('pages')) {
-        fs.removeSync('pages');
-    }
-    fs.mkdirSync('pages');
-
-    const template = fs.readFileSync(`${path.dirname(__filename)}/templates/page.ejs`).toString();
+export const generatePages = (configuration, templatePath, pagesPath, widgetIdGenerator, layoutPathFinder) => {
+    const template = fs.readFileSync(`${templatePath}/templates/page.ejs`).toString();
     const pages = preparePages(
         configuration,
-        () => `compossibru-${uuid()}`,
-        process.cwd
+        widgetIdGenerator,
+        layoutPathFinder
     );
     pages.forEach((page) => {
-        fs.writeFileSync(`pages/${page.routeFileName}.js`, ejs.render(template, page));
+        fs.writeFileSync(`${pagesPath}/${page.routeFileName}.js`, ejs.render(template, page));
     });
 };

@@ -1,5 +1,8 @@
 #!/usr/bin/env node
 
+import path from 'path';
+import fs from 'fs-extra';
+import { v4 as uuid } from 'uuid';
 import program from 'commander';
 import cosmiconfig from 'cosmiconfig';
 
@@ -26,6 +29,20 @@ const compossibru = () => {
     console.log(`${name} CLI (${version})`); // eslint-disable-line
 };
 
+const generatePagesProxy = (configuration) => {
+    if (fs.existsSync('pages')) {
+        fs.removeSync('pages');
+    }
+    fs.mkdirSync('pages');
+    generatePages(
+        configuration,
+        `${path.dirname(__filename)}/../../src/compossibru-generate-pages`,
+        'pages',
+        () => `compossibru-${uuid()}`,
+        process.cwd
+    );
+};
+
 program
     .version(version)
     .description([
@@ -42,11 +59,11 @@ program
     .option('-w, --watch [watch]', 'Watch files to re-generate pages', 'true')
     .action((options) => {
         compossibru();
-        generatePages(getConfiguration());
+        generatePagesProxy(getConfiguration());
         start(options.port);
         if (options.watch === 'true') {
             watch(getFilepathToWatch(), () => {
-                generatePages(getConfiguration());
+                generatePagesProxy(getConfiguration());
             });
         }
     });
@@ -56,7 +73,7 @@ program
     .description('Build the application')
     .action(() => {
         compossibru();
-        generatePages(getConfiguration());
+        generatePagesProxy(getConfiguration());
         build();
     });
 
