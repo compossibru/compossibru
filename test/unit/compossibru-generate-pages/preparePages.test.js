@@ -1,4 +1,4 @@
-const { preparePages } = require('../../../src/compossibru-generate-pages');
+import { preparePages } from '../../../src/compossibru-generate-pages';
 import configurationWithoutWidgetContextInput from './mock/configuration_without_widget_context_input.json';
 import configurationWithoutWidgetContextOutput from './mock/configuration_without_widget_context_output.json';
 import configurationWithWidgetContextInput from './mock/configuration_with_widget_context_input.json';
