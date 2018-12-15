@@ -29,6 +29,7 @@
     },
     "scripts": {
         "eslint": "npx eslint bin/*.js src/*.js",
+        "flow": "npx flow",
         "test": "npm run test:unit",
         "test:unit": "npx jest --env=node /test/unit",
         "prebuild": "rm -rf dist/ && mkdir dist && cp -r src bin ./dist",
@@ -42,7 +43,7 @@
     "husky": {
         "hooks": {
             "commit-msg": "npx commitlint -e $HUSKY_GIT_PARAMS",
-            "pre-push": "npm run eslint && npm run test:unit"
+            "pre-push": "npm run eslint && npm run flow && npm run test:unit"
         }
     },
     "publishConfig": {
@@ -73,9 +74,11 @@
         "babel-core": "6.26.3",
         "babel-eslint": "10.0.1",
         "babel-preset-es2015": "6.24.1",
+        "babel-preset-flow": "6.23.0",
         "eslint": "5.9.0",
         "eslint-config-airbnb-base": "13.1.0",
         "eslint-plugin-import": "2.14.0",
+        "flow-bin": "0.89.0",
         "husky": "1.2.0",
         "jest": "23.6.0",
         "semantic-release": "15.12.4"
