@@ -8,10 +8,18 @@ import Widget from './model/Widget';
 import ConfigurationParser from './parser/v1/ConfigurationParser';
 
 export const preparePages = (configuration, widgetIdGenerator, layoutPathFinder) => {
+    const version = `${configuration.Version || '1'}`;
     const globalImports = configuration.Imports || {};
     const globalStyles = configuration.Styles || [];
-    const configurationParser = new ConfigurationParser(configuration);
-    const routes = configurationParser.getRoutes();
+
+    let routes: Route[] = [];
+    if (version === '1') {
+        const configurationParser = new ConfigurationParser(configuration);
+        routes = configurationParser.getRoutes();
+    } else {
+        throw new Error(`Unsupported version: ${version}`);
+    }
+
     return routes.map((route: Route) => {
         let routeFileName = 'index';
         if (route.path !== '/') {
