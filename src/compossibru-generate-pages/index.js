@@ -12,7 +12,7 @@ export const preparePages = (configuration, widgetIdGenerator, layoutPathFinder)
     const globalImports = configuration.Imports || {};
     const globalStyles = configuration.Styles || [];
 
-    let routes: Route[] = [];
+    let routes: Route[];
     if (version === '1') {
         const configurationParser = new ConfigurationParser(configuration);
         routes = configurationParser.getRoutes();
