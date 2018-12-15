@@ -2,54 +2,46 @@ import fs from 'fs-extra';
 import ejs from 'ejs';
 import camelCase from 'camelcase';
 
+import Container from './model/Container';
+import Route from './model/Route';
+import Widget from './model/Widget';
+import ConfigurationParser from './parser/v1/ConfigurationParser';
+
 export const preparePages = (configuration, widgetIdGenerator, layoutPathFinder) => {
     const globalImports = configuration.Imports || {};
     const globalStyles = configuration.Styles || [];
-    return Object.keys(configuration.Routes).map((routeKey) => {
-        const routeConfig = configuration.Routes[routeKey];
-        let routeFileName;
-        if (routeConfig.Route === '/') {
-            routeFileName = 'index';
-        } else {
-            routeFileName = routeConfig.Route.split('/')[1]; // eslint-disable-line
+    const configurationParser = new ConfigurationParser(configuration);
+    const routes = configurationParser.getRoutes();
+    return routes.map((route: Route) => {
+        let routeFileName = 'index';
+        if (route.path !== '/') {
+            routeFileName = route.path.split('/')[1]; // eslint-disable-line
         }
-
         const widgetExecutions = [];
         const layoutVariables = {};
         const widgetImports = {};
-        Object.keys(routeConfig.Containers).forEach((containerName) => {
-            const widgets = routeConfig.Containers[containerName] || [];
+        route.containers.forEach((container: Container) => {
             const divs = [];
-            widgets.forEach((rawWidget) => {
-                let widget = rawWidget;
-                let widgetContext;
-                if (typeof rawWidget === 'object') {
-                    const keys = Object.keys(rawWidget);
-                    if (keys.length !== 1) {
-                        throw new Error('Widget is misconfigured');
-                    }
-                    widget = keys[0];
-                    widgetContext = rawWidget[widget];
-                }
+            container.widgets.forEach((widget: Widget) => {
                 const widgetId = widgetIdGenerator();
-                const widgetName = camelCase(widget).replace(/[^\w\s]/gi, '_');
-                const widgetPath = widget;
+                const widgetName = camelCase(widget.name).replace(/[^\w\s]/gi, '_');
+                const widgetPath = widget.name;
                 widgetExecutions.push({
                     id: widgetId,
                     name: widgetName,
-                    context: JSON.stringify(widgetContext || {})
+                    context: JSON.stringify(widget.context || {})
                 });
-                divs.push(`<div id="${widgetId}"></div>`);
-                widgetImports[widget] = {
+                widgetImports[widget.name] = {
                     name: widgetName,
                     path: widgetPath
                 };
+                divs.push(`<div id="${widgetId}"></div>`);
             });
-            layoutVariables[containerName] = divs.join('');
+            layoutVariables[container.name] = divs.join('');
         });
 
         return {
-            layoutPath: `${layoutPathFinder()}/${routeConfig.Layout}`,
+            layoutPath: `${layoutPathFinder()}/${route.layout}`,
             layoutVariables,
             imports: globalImports,
             styles: globalStyles,
