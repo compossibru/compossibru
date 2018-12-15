@@ -22,7 +22,9 @@
     "license": "MIT",
     "keywords": [
         "composite",
-        "composite-ui"
+        "composite-ui",
+        "micro-frontend",
+        "micro-frontends"
     ],
     "bin": {
         "compossibru": "dist/bin/cli.js"
