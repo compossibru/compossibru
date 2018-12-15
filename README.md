@@ -133,6 +133,7 @@ tbd
 - [x] publish to `npm registry`
 - [ ] create `init` CLI command to auto-generate configuration
 - [ ] improve path handling in `bin/cli.js`
+- [ ] change configuration to be case insensitive
 
 ## License
 
