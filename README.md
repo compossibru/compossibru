@@ -102,7 +102,7 @@ Add custom layouts to your `layouts` folder (e.g. `main.ejs`):
 </div>
 ```
 
-The final project structure looks now the following:
+The final project structure looks as following:
 ```
 .
 ├── layouts
@@ -121,7 +121,45 @@ npm start
 Enter http://localhost:3000
 
 ## How to write a widget?
-tbd
+A widget can be written with different libraries (e.g. [React](https://reactjs.org), [Vue](https://vuejs.org), [jQuery](https://jquery.com), etc.).
+Important here is that the entrypoint needs to be a function where `widgetId` and `widgetContext` is passed to.
+
+See the following example implementations using different libraries:
+
+### Example: React
+```
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+export default (widgetId, widgetContext) => {
+    ReactDOM.render(
+        <div>{JSON.stringify(widgetContext)}</div>,
+        document.getElementById(widgetId)
+    );
+}
+```
+
+### Example: Vue
+```
+import Vue from 'vue';
+
+export default (widgetId, widgetContext) => {
+    new Vue({
+        render: h => h('div', JSON.stringify(widgetContext))
+    }).$mount(`#${widgetId}`)
+};
+```
+
+### Example: jQuery
+```
+import $ from 'jquery';
+
+export default (widgetId, widgetContext) => {
+    $(document).ready(() => {
+        $(`#${widgetId}`).html(`<div>${JSON.stringify(widgetContext)}</div>`);
+    });
+};
+```
 
 ## Which features are still left?
 - [ ] add proper documentation
