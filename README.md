@@ -162,13 +162,7 @@ export default (widgetId, widgetContext) => {
 ```
 
 ## Which features are still left?
-- [ ] add proper documentation
-- [x] integrate [`commander.js`](https://github.com/tj/commander.js)
-- [x] integrate [`cosmiconfig`](https://github.com/davidtheclark/cosmiconfig)
-- [x] integrate [`semantic-release`](https://github.com/semantic-release/semantic-release)
-- [x] integrate [`jest`](https://github.com/facebook/jest)
 - [ ] create CI/CD (possibly [GitHub Actions](https://github.com/features/actions))
-- [x] publish to `npm registry`
 - [ ] create `init` CLI command to auto-generate configuration
 - [ ] improve path handling in `bin/cli.js`
 - [ ] change configuration to be case insensitive
