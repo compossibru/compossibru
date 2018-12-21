@@ -162,17 +162,17 @@ export default (widgetId, widgetContext) => {
 ```
 
 ## What is a widget context?
-Beside the basic widget configuration (which widget should be used in which container), it is possible to pass extended configuration to each widget and that's called `widget context`.
+Beside the basic widget configuration (which widget should be used in which container), it is possible to pass extended configurations to each widget and that's called `widget context`.
 
 See the following example configurations and the corresponding widget context:
 
 ### Example #1
 ##### Configuration
 ```yaml
-    [...]
-    Containers:
-      main:
-        - my-awesome-widget
+[...]
+Containers:
+  main:
+    - my-awesome-widget
 ```
 ##### Widget context
 ```json
@@ -182,11 +182,11 @@ See the following example configurations and the corresponding widget context:
 ### Example #2
 ##### Configuration
 ```yaml
-    [...]
-    Containers:
-      main:
-        - my-awesome-widget:
-            someKey: someValue
+[...]
+Containers:
+  main:
+    - my-awesome-widget:
+        someKey: someValue
 ```
 ##### Widget context
 ```json
@@ -198,14 +198,14 @@ See the following example configurations and the corresponding widget context:
 ### Example #3
 ##### Configuration
 ```yaml
-    [...]
-    Containers:
-      main:
-        - my-awesome-widget:
-            someObjectKey:
-              someArrayKey:
-                - someArrayElement1
-                - someArrayElement2
+[...]
+Containers:
+  main:
+    - my-awesome-widget:
+        someObjectKey:
+          someArrayKey:
+            - someArrayElement1
+            - someArrayElement2
 ```
 ##### Widget context
 ```json
