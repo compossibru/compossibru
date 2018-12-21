@@ -210,6 +210,11 @@ Containers:
 - [ ] create `init` CLI command to auto-generate configuration
 - [ ] improve path handling in `bin/cli.js`
 - [ ] change configuration to be case insensitive
+- [ ] add pub/sub support
+- [ ] add plugin support
+- [ ] add `i18n` plugin
+- [ ] add `auth` plugin
+- [ ] add `logger` plugin
 
 ## License
 
