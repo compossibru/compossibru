@@ -122,7 +122,7 @@ Enter http://localhost:3000
 
 ## How to write a widget?
 A widget can be written with different libraries (e.g. [React](https://reactjs.org), [Vue](https://vuejs.org), [jQuery](https://jquery.com), etc.).
-Important here is that the entrypoint needs to be a function where `widgetId` and `widgetContext` is passed to.
+Important here is that the entrypoint needs to be a function where `widgetId` and [`widgetContext`](#what-is-a-widget-context) is passed to.
 
 See the following example implementations using different libraries:
 
