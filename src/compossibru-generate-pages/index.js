@@ -3,14 +3,13 @@ import ejs from 'ejs';
 import camelCase from 'camelcase';
 
 import Container from './model/Container';
+import Import from './model/Import';
 import Route from './model/Route';
 import Widget from './model/Widget';
 import ConfigurationParser from './parser/v1/ConfigurationParser';
 
 export const preparePages = (configuration, widgetIdGenerator, layoutPathFinder) => {
     const version = `${configuration.Version || '1'}`;
-    const globalImports = configuration.Imports || {};
-    const globalStyles = configuration.Styles || [];
 
     let routes: Route[];
     if (version === '1') {
@@ -51,8 +50,15 @@ export const preparePages = (configuration, widgetIdGenerator, layoutPathFinder)
         return {
             layoutPath: `${layoutPathFinder()}/${route.layout}`,
             layoutVariables,
-            imports: globalImports,
-            styles: globalStyles,
+            imports: route.imports
+                .filter((routeImport: Import) => !!routeImport.value)
+                .reduce((object: Object, routeImport: Import) => ({
+                    ...object,
+                    [routeImport.key]: routeImport.value
+                }), {}),
+            styles: route.imports
+                .filter((routeImport: Import) => !routeImport.value)
+                .map((routeImport: Import) => routeImport.key),
             widgetImports: Object.values(widgetImports),
             widgetExecutions,
             routeFileName

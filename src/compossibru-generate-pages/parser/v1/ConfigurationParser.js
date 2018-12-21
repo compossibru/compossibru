@@ -1,6 +1,7 @@
 /* @flow */
 
 import Container from '../../model/Container';
+import Import from '../../model/Import';
 import Route from '../../model/Route';
 import Widget from '../../model/Widget';
 
@@ -15,9 +16,25 @@ export default class ConfigurationParser {
     getRoutes(): Route[] {
         return Object.keys(this.configuration.Routes).map((routeKey) => {
             const route = this.configuration.Routes[routeKey];
+            const routeStyles = [
+                ...(this.configuration.Styles || []),
+                ...(route.Styles || [])
+            ];
+            const routeImports = {
+                ...(this.configuration.Imports || {}),
+                ...(route.Imports || {})
+            };
+            const imports = [];
+            routeStyles.forEach((style) => {
+                imports.push(new Import(style));
+            });
+            Object.keys(routeImports).forEach((routeImportKey) => {
+                imports.push(new Import(routeImportKey, routeImports[routeImportKey]));
+            });
             return new Route(
                 route.Route,
                 route.Layout,
+                imports,
                 Object.keys(route.Containers).map((containerName) => {
                     const widgets = route.Containers[containerName];
                     return new Container(
