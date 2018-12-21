@@ -166,48 +166,34 @@ Beside the basic widget configuration (which widget should be used in which cont
 
 See the following example configurations and the corresponding widget context:
 
-### Example #1
-##### Configuration
+#### Configuration
 ```yaml
 [...]
 Containers:
   main:
     - my-awesome-widget
+    - my-second-awesome-widget:
+        someKey: someValue
+    - my-third-awesome-widget:
+        someObjectKey:
+          someArrayKey:
+            - someArrayElement1
+            - someArrayElement2
 ```
-##### Widget context
+
+#### Widget context for `my-awesome-widget`
 ```json
 {}
 ```
 
-### Example #2
-##### Configuration
-```yaml
-[...]
-Containers:
-  main:
-    - my-awesome-widget:
-        someKey: someValue
-```
-##### Widget context
+#### Widget context for `my-second-awesome-widget`
 ```json
 {
     "someKey": "someValue"
 }
 ```
 
-### Example #3
-##### Configuration
-```yaml
-[...]
-Containers:
-  main:
-    - my-awesome-widget:
-        someObjectKey:
-          someArrayKey:
-            - someArrayElement1
-            - someArrayElement2
-```
-##### Widget context
+#### Widget context for `my-third-awesome-widget`
 ```json
 {
     "someObjectKey": {
