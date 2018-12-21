@@ -47,7 +47,7 @@ Add scripts in your `package.json`:
 ```
 
 Add configuration to your `.compossibrurc` file:
-```yml
+```yaml
 Version: 1
 Routes:
   Home:
@@ -127,7 +127,7 @@ Important here is that the entrypoint needs to be a function where `widgetId` an
 See the following example implementations using different libraries:
 
 ### Example: React
-```
+```js
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -140,7 +140,7 @@ export default (widgetId, widgetContext) => {
 ```
 
 ### Example: Vue
-```
+```js
 import Vue from 'vue';
 
 export default (widgetId, widgetContext) => {
@@ -151,7 +151,7 @@ export default (widgetId, widgetContext) => {
 ```
 
 ### Example: jQuery
-```
+```js
 import $ from 'jquery';
 
 export default (widgetId, widgetContext) => {
@@ -159,6 +159,64 @@ export default (widgetId, widgetContext) => {
         $(`#${widgetId}`).html(`<div>${JSON.stringify(widgetContext)}</div>`);
     });
 };
+```
+
+## What is a widget context?
+Beside the basic widget configuration (which widget should be used in which container), it is possible to pass extended configuration to each widget and that's called `widget context`.
+
+See the following example configurations and the corresponding widget context:
+
+### Example #1
+##### Configuration
+```yaml
+    [...]
+    Containers:
+      main:
+        - my-awesome-widget
+```
+##### Widget context
+```json
+{}
+```
+
+### Example #2
+##### Configuration
+```yaml
+    [...]
+    Containers:
+      main:
+        - my-awesome-widget:
+            someKey: someValue
+```
+##### Widget context
+```json
+{
+    "someKey": "someValue"
+}
+```
+
+### Example #3
+##### Configuration
+```yaml
+    [...]
+    Containers:
+      main:
+        - my-awesome-widget:
+            someObjectKey:
+              someArrayKey:
+                - someArrayElement1
+                - someArrayElement2
+```
+##### Widget context
+```json
+{
+    "someObjectKey": {
+        "someArrayKey": [
+            "someArrayElement1",
+            "someArrayElement2"
+        ]
+    }
+}
 ```
 
 ## Which features are still left?
